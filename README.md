@@ -4,8 +4,9 @@ This is a Software developed for a Chartered Accountant(CA) firm to maintain the
 - Technologies used : HTML, CSS, JavaScript, PHP, MySQL.
 - IDE : VSCode.
 
-- Unzip all the files (crypto, login, controller). Place the login and Controller folder within Crypto folder.
 - Import crypto.sql to xampp
+
+- Documentation is also provided
 
 ABOUT THE PROJECT:
 - There are three users, Admin, employee and client
