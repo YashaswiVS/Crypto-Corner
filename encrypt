@@ -1,0 +1,630 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 15, 2021 at 09:43 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.1.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `encrypt`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `phone_number` bigint(10) NOT NULL,
+  `profile_pic` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `email`, `phone_number`, `profile_pic`) VALUES
+(1, 'Admin', 'admin@gmail.com', 9874563210, 'files/BBDS_CEO_Pic.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_msg_to_client`
+--
+
+CREATE TABLE `admin_msg_to_client` (
+  `id` int(11) NOT NULL,
+  `c_id` int(10) NOT NULL,
+  `chat` varchar(300) NOT NULL,
+  `from` varchar(30) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_msg_to_client`
+--
+
+INSERT INTO `admin_msg_to_client` (`id`, `c_id`, `chat`, `from`, `date`) VALUES
+(10, 28, 'Hi Sparsha, Welcome to BBDS ,We are glad to have you here', 'admin', '2021-07-08 11:10:43'),
+(11, 28, 'Thank you Sir', 'client', '2021-07-08 11:15:00'),
+(14, 30, 'hello mam, welcome to BBDS', 'admin', '2021-07-07 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_msg_to_emp`
+--
+
+CREATE TABLE `admin_msg_to_emp` (
+  `id` int(11) NOT NULL,
+  `e_id` int(10) NOT NULL,
+  `chat` varchar(300) NOT NULL,
+  `fromm` varchar(30) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_msg_to_emp`
+--
+
+INSERT INTO `admin_msg_to_emp` (`id`, `e_id`, `chat`, `fromm`, `date`) VALUES
+(9, 18, 'Hi Swasthik, Welcome to BBDS ,We are glad to have you here', 'admin', '2021-07-08 11:09:35'),
+(10, 18, 'Thank you Sir', 'emp', '2021-07-08 11:12:53'),
+(11, 20, 'Hey Varun, Welcome to BBDS', 'admin', '2021-07-12 21:46:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignclienttoemp`
+--
+
+CREATE TABLE `assignclienttoemp` (
+  `as_id` int(11) NOT NULL,
+  `emp_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignclienttoemp`
+--
+
+INSERT INTO `assignclienttoemp` (`as_id`, `emp_id`, `cl_id`) VALUES
+(21, 18, 28),
+(27, 18, 31),
+(28, 18, 32);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auditedfiles`
+--
+
+CREATE TABLE `auditedfiles` (
+  `a_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL,
+  `emp_id` int(11) NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `aufname` varchar(20) NOT NULL,
+  `aud_file` varchar(250) NOT NULL,
+  `fsize` varchar(11) NOT NULL,
+  `stutus` varchar(10) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `auditedfiles`
+--
+
+INSERT INTO `auditedfiles` (`a_id`, `cl_id`, `emp_id`, `cat_id`, `aufname`, `aud_file`, `fsize`, `stutus`, `date`) VALUES
+(28, 28, 18, 18, 'audited sales', 'audFiles/28-audited sales-2021-Jul-08-28-sales-2021-Jul-08-Complete analysis of MESNA-1.pdf.enc', '662.66 KB', 'Rejected', '2021-07-08'),
+(31, 31, 18, 18, 'audited sales', 'audFiles/31-audited sales-2021-Jul-13-31-sales-2021-Jul-13-essay.pdf.enc', '3.18 MB', 'Accepted', '2021-07-13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `cl_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `address` varchar(75) NOT NULL,
+  `o_name` varchar(35) NOT NULL,
+  `o_address` varchar(150) NOT NULL,
+  `GSTno` varchar(35) NOT NULL,
+  `ph` bigint(10) NOT NULL,
+  `profile_pic` varchar(200) NOT NULL,
+  `c_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`cl_id`, `name`, `email`, `address`, `o_name`, `o_address`, `GSTno`, `ph`, `profile_pic`, `c_date`) VALUES
+(28, 'Sparsha', 'sparshaalva@gmail.com', 'Kaikamba, B C Road', 'Data center', 'Mangalore gate, Kankanady', 'DFR45Y3f467HC34', 8088923148, 'profilePics/IMG_20210608_123156.jpg', '2021-07-08'),
+(30, 'Neha', 'neha.d12@gmail.com', 'Nagara,Puttur', 'Capita', 'Kalladka', 'A222BC3DE233A12', 9449233715, 'profilePics/IMG-20210103-WA0021.jpg', '2021-07-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cl_to_do_list`
+--
+
+CREATE TABLE `cl_to_do_list` (
+  `t_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL,
+  `todo_name` varchar(35) NOT NULL,
+  `to_do_desc` varchar(400) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `e_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email_id` varchar(35) NOT NULL,
+  `address` varchar(60) NOT NULL,
+  `phone` bigint(10) NOT NULL,
+  `date` date NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `pro_pic` varchar(200) NOT NULL,
+  `r_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`e_id`, `name`, `email_id`, `address`, `phone`, `date`, `gender`, `pro_pic`, `r_date`) VALUES
+(18, 'swasthik', 'swasthikanchankolya@gmail.com', 'Kaneerthota, Kolya', 9741345033, '2000-11-03', 'Male', 'profilePics/IMG_20210705_143554.jpg', '2021-07-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_msg_to_client`
+--
+
+CREATE TABLE `emp_msg_to_client` (
+  `id` int(11) NOT NULL,
+  `c_id` int(10) NOT NULL,
+  `e_id` int(10) NOT NULL,
+  `chat` varchar(300) NOT NULL,
+  `from` varchar(30) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emp_msg_to_client`
+--
+
+INSERT INTO `emp_msg_to_client` (`id`, `c_id`, `e_id`, `chat`, `from`, `date`) VALUES
+(11, 28, 18, 'Hello mam', 'employee', '2021-07-08 11:13:11'),
+(12, 28, 18, 'Hello', 'client', '2021-07-08 11:15:14'),
+(13, 28, 18, 'How may i help you?', 'employee', '2021-07-12 17:18:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp_to_do_list`
+--
+
+CREATE TABLE `emp_to_do_list` (
+  `t_id` int(11) NOT NULL,
+  `emp_id` int(11) NOT NULL,
+  `todo_name` varchar(35) NOT NULL,
+  `to_do_desc` varchar(400) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emp_to_do_list`
+--
+
+INSERT INTO `emp_to_do_list` (`t_id`, `emp_id`, `todo_name`, `to_do_desc`, `date`) VALUES
+(6, 18, 'Meeting', 'Meeting at 2.00pm', '2021-07-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+CREATE TABLE `files` (
+  `f_id` int(11) NOT NULL,
+  `c_id` int(30) NOT NULL,
+  `cl_id` int(30) NOT NULL,
+  `fileName` varchar(150) NOT NULL,
+  `file_size` varchar(30) NOT NULL,
+  `file` varchar(250) NOT NULL,
+  `stutus` varchar(15) NOT NULL,
+  `fudate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`f_id`, `c_id`, `cl_id`, `fileName`, `file_size`, `file`, `stutus`, `fudate`) VALUES
+(60, 13, 28, 'sales', '662.66 KB', 'clientFiles/28-sales-2021-Jul-08-Complete analysis of MESNA-1.pdf.enc', 'downloaded', '2021-07-08'),
+(66, 14, 28, 'purchse', '3.18 MB', 'clientFiles/28-purchse-2021-Jul-13-essay.pdf.enc', 'unseen', '2021-07-13'),
+(67, 13, 30, 'sales', '3.18 MB', 'clientFiles/30-sales-2021-Jul-13-essay.pdf.enc', 'unseen', '2021-07-13'),
+(68, 13, 31, 'sales', '3.18 MB', 'clientFiles/31-sales-2021-Jul-13-essay.pdf.enc', 'downloaded', '2021-07-13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_category`
+--
+
+CREATE TABLE `file_category` (
+  `c_id` int(11) NOT NULL,
+  `cat_name` varchar(30) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `c_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `file_category`
+--
+
+INSERT INTO `file_category` (`c_id`, `cat_name`, `description`, `c_date`) VALUES
+(13, 'Sales History', 'Information of income from sales of a particular product in the past', '2021-07-07'),
+(14, 'Purchase History', 'Order history to keep track of all current and past orders and their status in the order process.', '2021-07-07'),
+(15, 'Petty Expense', 'Small expenses incurred  in the course of work', '2021-07-07'),
+(16, 'Bank Statement', 'A bank issues a bank statement to an account holder that shows the detailed activity in the account.', '2021-07-07'),
+(17, 'Income Statement', 'This report reveals the financial performance of an organisation for the entire reporting period.', '2021-07-07'),
+(18, 'Balance Sheet', 'It is the financial statement that reports a companys assets, liabilities and shareholders equity at a specific time', '2021-07-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `l_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `password` varchar(2000) NOT NULL,
+  `roll` varchar(1) NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`l_id`, `name`, `email`, `password`, `roll`, `created_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', '$2y$10$dR.Fp4Zcu/8IUYMfkGWENuXUjO1Qk4hhYNVRaoashuTInGxB.l86G', 'a', '2021-04-13'),
+(31, 'swasthik', 'swasthikanchankolya@gmail.com', '$2y$10$ImKCs3QcdyrRCjNVRegcdOq..p7pXgPvCIPFOTkD4gGylP.nKM2FS', 'e', '2021-07-08'),
+(32, 'Sparsha', 'sparshaalva@gmail.com', '$2y$10$n5B9wjKdlA6OhCR2tAk6kO0uoy4H5Jc7qitLsUn6fnWWqdMQdG4Ga', 'c', '2021-07-08'),
+(36, 'Neha', 'neha.d12@gmail.com', '$2y$10$3wuL3IinYDVLBL2mNvd2G.xaH4cdPk0YSL83ED1g/M2xO/lQ0BUfm', 'c', '2021-07-12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `pay_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL,
+  `ammount` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `transaction_id` varchar(90) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`pay_id`, `cl_id`, `ammount`, `date`, `transaction_id`) VALUES
+(19, 28, '300', '2021-07-10', 'ABC124');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `query`
+--
+
+CREATE TABLE `query` (
+  `q_id` int(11) NOT NULL,
+  `cl_id` int(11) NOT NULL,
+  `subject` varchar(300) NOT NULL,
+  `date` date NOT NULL,
+  `description` varchar(2500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `query`
+--
+
+INSERT INTO `query` (`q_id`, `cl_id`, `subject`, `date`, `description`) VALUES
+(14, 28, 'Regarding my work experience', '2021-07-08', 'Employee is good..He completed all my requirements in the given time. ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `replay`
+--
+
+CREATE TABLE `replay` (
+  `r_id` int(11) NOT NULL,
+  `q_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
+  `message` varchar(2500) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `replay`
+--
+
+INSERT INTO `replay` (`r_id`, `q_id`, `c_id`, `message`, `date`) VALUES
+(21, 14, 28, 'Glad to here that. Thank you', '2021-07-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `to_do_list`
+--
+
+CREATE TABLE `to_do_list` (
+  `t_id` int(11) NOT NULL,
+  `todo_name` varchar(35) NOT NULL,
+  `to_do_desc` varchar(400) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `to_do_list`
+--
+
+INSERT INTO `to_do_list` (`t_id`, `todo_name`, `to_do_desc`, `date`) VALUES
+(5, 'Notify Payment', 'Notify Ms Sparsha to make the payment  ', '2021-07-11');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_msg_to_client`
+--
+ALTER TABLE `admin_msg_to_client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_msg_to_emp`
+--
+ALTER TABLE `admin_msg_to_emp`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `assignclienttoemp`
+--
+ALTER TABLE `assignclienttoemp`
+  ADD PRIMARY KEY (`as_id`),
+  ADD KEY `em_id` (`emp_id`);
+
+--
+-- Indexes for table `auditedfiles`
+--
+ALTER TABLE `auditedfiles`
+  ADD PRIMARY KEY (`a_id`),
+  ADD KEY `c_id` (`cat_id`),
+  ADD KEY `cl_id` (`cl_id`);
+
+--
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`cl_id`);
+
+--
+-- Indexes for table `cl_to_do_list`
+--
+ALTER TABLE `cl_to_do_list`
+  ADD PRIMARY KEY (`t_id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`e_id`);
+
+--
+-- Indexes for table `emp_msg_to_client`
+--
+ALTER TABLE `emp_msg_to_client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `emp_to_do_list`
+--
+ALTER TABLE `emp_to_do_list`
+  ADD PRIMARY KEY (`t_id`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`f_id`),
+  ADD KEY `clid` (`cl_id`),
+  ADD KEY `catid` (`c_id`);
+
+--
+-- Indexes for table `file_category`
+--
+ALTER TABLE `file_category`
+  ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`l_id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`pay_id`);
+
+--
+-- Indexes for table `query`
+--
+ALTER TABLE `query`
+  ADD PRIMARY KEY (`q_id`);
+
+--
+-- Indexes for table `replay`
+--
+ALTER TABLE `replay`
+  ADD PRIMARY KEY (`r_id`);
+
+--
+-- Indexes for table `to_do_list`
+--
+ALTER TABLE `to_do_list`
+  ADD PRIMARY KEY (`t_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `admin_msg_to_client`
+--
+ALTER TABLE `admin_msg_to_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `admin_msg_to_emp`
+--
+ALTER TABLE `admin_msg_to_emp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `assignclienttoemp`
+--
+ALTER TABLE `assignclienttoemp`
+  MODIFY `as_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `auditedfiles`
+--
+ALTER TABLE `auditedfiles`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `cl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `cl_to_do_list`
+--
+ALTER TABLE `cl_to_do_list`
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `e_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `emp_msg_to_client`
+--
+ALTER TABLE `emp_msg_to_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `emp_to_do_list`
+--
+ALTER TABLE `emp_to_do_list`
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `file_category`
+--
+ALTER TABLE `file_category`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `query`
+--
+ALTER TABLE `query`
+  MODIFY `q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `replay`
+--
+ALTER TABLE `replay`
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `to_do_list`
+--
+ALTER TABLE `to_do_list`
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
