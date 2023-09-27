@@ -23,5 +23,16 @@ Other features in the project:
 - Edit Profile
 
   
-User Panel :
-![user panel](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/cd5b66a5-c427-4546-911b-1ce978526405)
+User Panel:
+- ![user panel](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/ffac0ec4-fa7a-4bbe-9386-394c9e7b22d1)
+- ![up](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/2df81698-8b6a-4247-b0f8-17de7464f01c)
+- ![up1](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/1fea6bc3-3a93-4fe3-92f7-a775d1673791)
+- ![up2](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/b021d9c2-0da0-482b-9e3b-693a06ebd3e5)
+- ![login](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/f0a2b676-0430-4817-aad5-89d7bcf23f9f)
+- ![forgt passwrd](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/4393a32e-283f-409a-830b-b400f30df611)
+
+Admin Dashboard:
+- ![admin dash](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/5909a641-39a2-4689-b33d-69c4f098eae5)
+- ![admin d](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/ff368863-d3b1-4262-9eb8-9bea695ea46b)
+- ![client](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/d39ce3b4-fb6d-49d9-9aa4-13d6e1c63b35)
+
