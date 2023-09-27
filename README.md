@@ -21,3 +21,4 @@ Other features in the project:
 - Queries
 - Payment
 - Edit Profile
+![Screenshot (545)](https://github.com/YashaswiVS/Crypto-Corner/assets/84309074/5ae374af-7ddd-497c-859c-746427df92bd)
